@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 import config from '../config/config'
-import Scene from './scene';
+import Sample_scene from './sample_scene';
 
 const app = new PIXI.Application({
   width: config.screenWidth,
@@ -9,7 +9,7 @@ const app = new PIXI.Application({
   view: document.querySelector('#scene')
 });
 
-// const scene = new Scene(app);
+// const scene = new Sample_scene(app);
 // scene.run();
 
 // below this code, study for pixi stuffs
@@ -75,15 +75,49 @@ app.stage.addChild(particleContainer);
 
 
 // Context
-class A {
-  myName = "I am A";
-  method() {
+// class A {
+//   myName = "I am A";
+//   method() {
+//
+//   }
+// }
+//
+// class B {
+//   myName = "I am B";
+//   printName() {
+//     console.log(this.myName);
+//   }
+// }
+//
+// const a = new A();
+// const b = new B();
 
+// I assign a.method
+// a.method = b.printName;
+// a.method();     // this will print "I am A"
+// b.printName();  // this will print "I am B"
+//
+// // this will create a new function where `b` is the `this` for that function
+// a.method = b.printName.bind(b);   // --> B 클래스의 printName 이라는 함수의 this 객체를 b 클래스로 고정.
+// a.method();     // this now prints "I am B"
+
+
+
+
+
+// code split -> using Container with Sample_scene.js
+const sceny = new Sample_scene(config.screenWidth, config.screenHeight);
+app.stage.addChild(sceny);
+
+class A {
+  myName = 'i am A';
+  method() {
+    // empty
   }
 }
 
 class B {
-  myName = "I am B";
+  myName = 'i am B';
   printName() {
     console.log(this.myName);
   }
@@ -92,19 +126,16 @@ class B {
 const a = new A();
 const b = new B();
 
-// I assign a.method
 a.method = b.printName;
-a.method();     // this will print "I am A"
-b.printName();  // this will print "I am B"
+a.method();   // this will print 'i am A'
+b.printName();
 
-// this will create a new function where `b` is the `this` for that function
-a.method = b.printName.bind(b);   // --> B 클래스의 printName 이라는 함수의 this 객체를 b 클래스로 고정.
-a.method();     // this now prints "I am B"
+// 'this' binding
+a.method = b.printName.bind(b);
+a.method();   // this will print 'i am B'
 
 
-// code split -> using Container with Scene.js
-const sceny = new Scene(config.screenWidth, config.screenHeight);
-app.stage.addChild(sceny);
+
 
 
 

@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 
-class Scene extends PIXI.Container {
+class Sample_scene extends PIXI.Container {
   screenWidth;
   screenHeight;
   constructor(screenWidth, screenHeight) {
@@ -33,4 +33,4 @@ class Scene extends PIXI.Container {
 
 }
 
-export default Scene;
+export default Sample_scene;
